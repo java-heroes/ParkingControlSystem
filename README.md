@@ -17,6 +17,10 @@ The system will be able to perform "Parking business registration, parking renta
 - JWT
 - IOC
 
+### :floppy_disk: Entity Relationship Diagram (ERD)
+![git_parking_ERD](https://user-images.githubusercontent.com/64933639/126882064-d7876c1d-4ad2-486e-b62f-45ffa674582e.png)
+
+
 ---------------------------------------------------
 
 ### 	:woman_technologist: Team Leader
