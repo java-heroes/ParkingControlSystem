@@ -36,8 +36,8 @@ public class Owner {
 	@Column(name="phone_number")
 	private String phone_number;
 	
-	@Column(name="create_date")
-	private String create_date;
+	@Column(name="date")
+	private String date;
 	
 
 }
