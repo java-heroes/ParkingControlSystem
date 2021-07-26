@@ -40,7 +40,7 @@ public class OwnerController {
 	
 	@DeleteMapping("/delete/{id}")
 	private void deleteById(@PathVariable("id") Integer id) {
-		ownerService.deleteById(id);
+		ownerService.deleteByOwnerId(id);
 	}
 	
 
