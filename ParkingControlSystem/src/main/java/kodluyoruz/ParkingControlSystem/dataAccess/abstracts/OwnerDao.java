@@ -8,6 +8,7 @@ import kodluyoruz.ParkingControlSystem.entities.concretes.Owner;
 
 public interface OwnerDao extends JpaRepository<Owner ,Integer> {
 	
+	   Owner getByOwnerName(String name);
 	
 		Owner getByOwnerNameAndOwnerSurname(String name, String surname);
 	    
@@ -15,7 +16,7 @@ public interface OwnerDao extends JpaRepository<Owner ,Integer> {
 		
 		List<Owner> getByOwnerNameContains(String name);
 		
-		public void deleteById(Integer id);
+		List<Owner> deleteByOwnerId(Integer id);
 		
 	
 }
