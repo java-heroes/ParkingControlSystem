@@ -21,7 +21,7 @@ public class Owner {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "owner_id")
 	private int id;
 	
 	@Column(name="name")
