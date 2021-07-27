@@ -1,11 +1,13 @@
 package kodluyoruz.ParkingControlSystem.business.concretes;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import kodluyoruz.ParkingControlSystem.business.abstracts.OwnerService;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.DataResult;
+import kodluyoruz.ParkingControlSystem.core.utilities.results.ErrorResult;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.Result;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.SuccessDataResult;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.SuccessResult;
@@ -36,8 +38,12 @@ public class OwnerManager implements OwnerService {
 	
 	@Override
 	public Result update(Owner owner) {
-		this.ownerDao.save(owner);
-		return new SuccessResult("Otopark sahibi gÃ¼ncellendi");
+		Optional<Owner> getOwner = ownerDao.findById(owner.getId());
+		 if(!getOwner.isPresent()) {
+             return new ErrorResult("Data ID'si bulunamadı");
+        }
+		 this.ownerDao.save(owner);
+		 return new SuccessResult("Data güncellendi");
 	}
 
 	@Override
@@ -66,8 +72,8 @@ public class OwnerManager implements OwnerService {
 
 	
 	@Override
-	public DataResult<List<Owner>> deleteById(int id) {
-		return new SuccessDataResult<List<Owner>>
+	public DataResult<Owner> deleteById(int id) {
+		return new SuccessDataResult<Owner>
 		(this.ownerDao.deleteById(id), "Data silindi");
 	}
 

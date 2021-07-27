@@ -16,7 +16,7 @@ public interface OwnerDao extends JpaRepository<Owner ,Integer> {
 		
 		List<Owner> getByNameContains(String name);
 		
-		List<Owner> deleteById(int id);
+		Owner deleteById(int id);
 		
 	
 }

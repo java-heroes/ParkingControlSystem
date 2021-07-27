@@ -11,6 +11,7 @@ import kodluyoruz.ParkingControlSystem.entities.concretes.Owner;
 public interface OwnerService {
 	
 	DataResult<List<Owner>> getAll();
+	
 	Result add(Owner owner);
 	
 	Result update(Owner owner);
@@ -23,7 +24,7 @@ public interface OwnerService {
 	
 	DataResult<List<Owner>> getByNameContains(String name);
 	
-	DataResult<List<Owner>> deleteById(int id);
+	DataResult<Owner> deleteById(int id);
 	
 	
 }

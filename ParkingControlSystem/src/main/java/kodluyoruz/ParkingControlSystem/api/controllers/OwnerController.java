@@ -40,9 +40,9 @@ public class OwnerController {
 	}
 	
 	@PutMapping("/update")
-	public Result update(@RequestBody Owner owner) {
-		return this.ownerService.update(owner);
-	}
+    public Result update(@RequestBody Owner owner) {
+        return this.ownerService.update(owner);
+    }
 	
 	
 	@DeleteMapping("/delete/{id}")
