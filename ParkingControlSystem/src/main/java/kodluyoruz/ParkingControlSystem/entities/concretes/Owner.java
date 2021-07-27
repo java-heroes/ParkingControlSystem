@@ -1,12 +1,18 @@
 package kodluyoruz.ParkingControlSystem.entities.concretes;
 
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Table(name="owners")
 @AllArgsConstructor
 @NoArgsConstructor
-
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","carPark"})
 public class Owner {
 	
 	@Id
@@ -39,5 +45,7 @@ public class Owner {
 	@Column(name="create_date")
 	private Date createDate;
 	
+	@OneToMany(mappedBy="owner")
+	private List<CarPark> carParks;
 
 }
