@@ -34,6 +34,6 @@ public class CarPark {
     private float unitPrice;
 
     @ManyToOne()
-    @JoinColumn(name="id")
+    @JoinColumn(name="owner_id")
     private Owner owner;
 }

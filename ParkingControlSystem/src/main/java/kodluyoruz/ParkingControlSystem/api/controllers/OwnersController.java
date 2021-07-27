@@ -18,12 +18,12 @@ import kodluyoruz.ParkingControlSystem.entities.concretes.Owner;
 
 @RestController
 @RequestMapping("/api/owners")
-public class OwnerController {
+public class OwnersController {
 	
 	private OwnerService ownerService;
 	
 	@Autowired
-	public OwnerController(OwnerService ownerService)  {
+	public OwnersController(OwnerService ownerService)  {
 		super();
 		this.ownerService = ownerService;
 	}
