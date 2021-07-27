@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -36,4 +37,7 @@ public class CarPark {
     @ManyToOne()
     @JoinColumn(name="owner_id")
     private Owner owner;
+    
+    @OneToMany(mappedBy="carPark")
+    private List<ParkLayout> parkLayouts;
 }
