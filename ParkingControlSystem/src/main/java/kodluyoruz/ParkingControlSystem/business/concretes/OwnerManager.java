@@ -31,37 +31,46 @@ public class OwnerManager implements OwnerService {
 	@Override
 	public Result add(Owner owner) {
 		this.ownerDao.save(owner);
-		return new SuccessResult("Ürün eklendi");
+		return new SuccessResult("Otopark sahibi eklendi");
+	}
+	
+	@Override
+	public Result update(Owner owner) {
+		this.ownerDao.save(owner);
+		return new SuccessResult("Otopark sahibi gÃ¼ncellendi");
 	}
 
 	@Override
-	public DataResult<Owner> getByOwnerName(String name) {
+	public DataResult<Owner> getByName(String name) {
 		return new SuccessDataResult<Owner>
-		(this.ownerDao.getByOwnerName(name), "Data listelendi");
+		(this.ownerDao.getByName(name), "Data listelendi");
 	}
 
 	@Override
-	public DataResult<Owner> getByOwnerNameAndOwnerSurname(String name, String surname) {
+	public DataResult<Owner> getByNameAndSurname(String name, String surname) {
 		return new SuccessDataResult<Owner>
-		(this.ownerDao.getByOwnerNameAndOwnerSurname(name, surname), "Data listelendi");
+		(this.ownerDao.getByNameAndSurname(name, surname), "Data listelendi");
 	}
 
 	@Override
-	public DataResult<List<Owner>> getByMailOrPhoneNumber(String mail, String phone_number) {
+	public DataResult<List<Owner>> getByEmailOrPhoneNumber(String email, String phoneNumber) {
 		return new SuccessDataResult<List<Owner>>
-		(this.ownerDao.getByMailOrPhoneNumber(mail, phone_number), "Data listelendi");
+		(this.ownerDao.getByEmailOrPhoneNumber(email, phoneNumber), "Data listelendi");
 	}
 
 	@Override
-	public DataResult<List<Owner>> getByOwnerNameContains(String name) {
+	public DataResult<List<Owner>> getByNameContains(String name) {
 		return new SuccessDataResult<List<Owner>>
-		(this.ownerDao.getByOwnerNameContains(name), "Data listelendi");
+		(this.ownerDao.getByNameContains(name), "Data listelendi");
 	}
 
+	
 	@Override
-	public DataResult<List<Owner>> deleteByOwnerId(Integer id) {
+	public DataResult<List<Owner>> deleteById(int id) {
 		return new SuccessDataResult<List<Owner>>
-		(this.ownerDao.deleteByOwnerId(id), "Data silindi");
+		(this.ownerDao.deleteById(id), "Data silindi");
 	}
+
+	
 
 }

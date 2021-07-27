@@ -8,15 +8,15 @@ import kodluyoruz.ParkingControlSystem.entities.concretes.Owner;
 
 public interface OwnerDao extends JpaRepository<Owner ,Integer> {
 	
-	   Owner getByOwnerName(String name);
+	   Owner getByName(String name);
 	
-		Owner getByOwnerNameAndOwnerSurname(String name, String surname);
+		Owner getByNameAndSurname(String name, String surname);
 	    
-	    List<Owner> getByMailOrPhoneNumber(String mail, String phone_number);
+	    List<Owner> getByEmailOrPhoneNumber(String email, String phoneNumber);
 		
-		List<Owner> getByOwnerNameContains(String name);
+		List<Owner> getByNameContains(String name);
 		
-		List<Owner> deleteByOwnerId(Integer id);
+		List<Owner> deleteById(int id);
 		
 	
 }

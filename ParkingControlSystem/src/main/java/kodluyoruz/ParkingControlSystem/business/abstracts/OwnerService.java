@@ -13,19 +13,17 @@ public interface OwnerService {
 	DataResult<List<Owner>> getAll();
 	Result add(Owner owner);
 	
-    DataResult<Owner> getByOwnerName(String name);
+	Result update(Owner owner);
 	
-	DataResult<Owner> getByOwnerNameAndOwnerSurname(String name, String surname);
+    DataResult<Owner> getByName(String name);
 	
-	DataResult<List<Owner>> getByMailOrPhoneNumber(String mail, String phone_number);
+	DataResult<Owner> getByNameAndSurname(String name, String surname);
 	
-	DataResult<List<Owner>> getByOwnerNameContains(String name);
+	DataResult<List<Owner>> getByEmailOrPhoneNumber(String email, String phoneNumber);
 	
-	DataResult<List<Owner>> deleteByOwnerId(Integer id);
+	DataResult<List<Owner>> getByNameContains(String name);
 	
-	
-	
-	
+	DataResult<List<Owner>> deleteById(int id);
 	
 	
 }
