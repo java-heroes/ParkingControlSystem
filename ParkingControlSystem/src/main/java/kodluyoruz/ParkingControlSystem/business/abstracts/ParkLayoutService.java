@@ -10,6 +10,8 @@ public interface ParkLayoutService {
 	
 	DataResult<List<ParkLayout>> getAll();
 	
+	DataResult<List<ParkLayout>> getAllSorted();
+	
 	Result add(ParkLayout parkLayout);
 	
 	DataResult<ParkLayout> getByName(char name);
