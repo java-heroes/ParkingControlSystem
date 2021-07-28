@@ -42,5 +42,10 @@ public class ParkLayoutsController {
 	public DataResult<ParkLayout> getByName(@RequestParam char name){
 		return this.parkLayoutService.getByName(name);
 	}
+	
+	@GetMapping("/getByNameAndCarParkId")
+	public DataResult<ParkLayout> getByNameAndCarParkId(@RequestParam("name") char name,@RequestParam("carParkId") int carParkId){
+		return this.getByNameAndCarParkId(name, carParkId);
+	}
 
 }
