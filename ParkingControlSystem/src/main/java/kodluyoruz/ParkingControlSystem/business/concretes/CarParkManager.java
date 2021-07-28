@@ -3,6 +3,7 @@ package kodluyoruz.ParkingControlSystem.business.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import kodluyoruz.ParkingControlSystem.business.abstracts.CarParkService;
@@ -78,5 +79,11 @@ private CarParkDao carParkDao;
 	public DataResult<List<CarPark>> getByNameAndOwner(String name, int ownerId) {
 		
 		return new SuccessDataResult<List<CarPark>>(this.carParkDao.getByNameAndOwner(name, ownerId), "Otoparklar listelendi");
+	}
+
+	@Override
+	public DataResult<List<CarPark>> getAllSorted() {
+		Sort sort = Sort.by(Sort.Direction.ASC, "name");
+		return new SuccessDataResult<List<CarPark>>(this.carParkDao.findAll(sort), "Otoparklar listelendi");
 	}
 }
