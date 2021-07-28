@@ -48,4 +48,8 @@ public class ParkLayoutsController {
 		return this.getByNameAndCarParkId(name, carParkId);
 	}
 
+	@GetMapping("/getAllAsc")
+	public DataResult<List<ParkLayout>> getAllSorted(){
+		return this.parkLayoutService.getAllSorted();
+	}
 }
