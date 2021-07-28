@@ -41,5 +41,10 @@ private CarParkService carParkService;
 	public DataResult<CarPark> getByName(@RequestParam String name){
 		return this.carParkService.getByName(name);
 	}
+	
+	@GetMapping("/getAllAsc")
+	public DataResult<List<CarPark>> getAllSorted(){
+		return this.carParkService.getAllSorted();
+	}
 
 }
