@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="car_parks")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","parkLayout"})
 public class CarPark {
 
     @Id
@@ -38,6 +42,6 @@ public class CarPark {
     @JoinColumn(name="owner_id")
     private Owner owner;
     
-    @OneToMany(mappedBy="carPark")
+    @OneToMany(mappedBy="carPark", cascade = CascadeType.ALL)
     private List<ParkLayout> parkLayouts;
 }
