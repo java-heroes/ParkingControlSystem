@@ -10,6 +10,8 @@ public interface CarParkService {
 	
 	DataResult<List<CarPark>> getAll();
 	
+	DataResult<List<CarPark>> getAllSorted();
+	
 	Result add(CarPark carPark);
 	
 	DataResult<CarPark> getByName (String name);
