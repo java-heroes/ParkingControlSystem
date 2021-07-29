@@ -39,7 +39,7 @@ public class ParkLayoutsController {
 	}
 	
 	@GetMapping("/getByName")
-	public DataResult<ParkLayout> getByName(@RequestParam char name){
+	public DataResult<ParkLayout> getByName(@RequestParam String name){
 		return this.parkLayoutService.getByName(name);
 	}
 	
