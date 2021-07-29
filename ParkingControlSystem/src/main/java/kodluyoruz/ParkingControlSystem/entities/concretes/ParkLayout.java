@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name="park_layouts")
 @Entity
+
 public class ParkLayout {
 
 	@Id
@@ -29,7 +30,7 @@ public class ParkLayout {
 	//private int carParkId;
 	
 	@Column(name="name")
-	private char name;
+	private String name;
 	
 	@ManyToOne()
 	@JoinColumn(name="car_park_id")
