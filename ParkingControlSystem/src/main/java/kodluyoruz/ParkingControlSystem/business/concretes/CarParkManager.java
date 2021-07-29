@@ -1,6 +1,7 @@
 package kodluyoruz.ParkingControlSystem.business.concretes;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kodluyoruz.ParkingControlSystem.business.abstracts.CarParkService;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.DataResult;
+import kodluyoruz.ParkingControlSystem.core.utilities.results.ErrorResult;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.Result;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.SuccessDataResult;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.SuccessResult;
@@ -38,6 +40,21 @@ private CarParkDao carParkDao;
 		return new SuccessResult("Otopark eklendi");
 	}
 
+	@Override
+	public Result update(CarPark carPark) {
+		Optional<CarPark> getCarPark = carParkDao.findById(carPark.getId());
+		if(!getCarPark.isPresent()) {
+			return new ErrorResult("Data Id'si bulunamadı");
+		}
+		this.carParkDao.save(carPark);
+		return new SuccessResult("Data güncellendi");
+	}
+
+	@Override
+	public DataResult<CarPark> deleteById(int id) {
+		return new SuccessDataResult<CarPark>(this.carParkDao.deleteById(id), "Data silindi");
+	}
+	
 	@Override
 	public DataResult<CarPark> getByName(String name) {
 		
