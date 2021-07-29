@@ -9,18 +9,18 @@ import kodluyoruz.ParkingControlSystem.entities.concretes.ParkLayout;
 
 public interface ParkLayoutDao extends JpaRepository<ParkLayout, Integer>{
 
-	ParkLayout getByName(char name);
+	ParkLayout getByName(String name);
 	
-	ParkLayout getByNameAndCarParkId(char name, int carParkId);
+	ParkLayout getByNameAndCarParkId(String name, int carParkId);
 	
-	List<ParkLayout> getByNameOrCarPark(char name, int carParkId);
+	List<ParkLayout> getByNameOrCarPark(String name, int carParkId);
 	
 	List<ParkLayout> getByCarParkIdIn(List<Integer> carParks);
 	
-	List<ParkLayout> getByNameContains(char name);
+	List<ParkLayout> getByNameContains(String name);
 	
-	List<ParkLayout> getByNameStartsWith(char name);
+	List<ParkLayout> getByNameStartsWith(String name);
 	
 	@Query("From ParkLayout where name=:name and carPark.id=:carParkId")
-	List<ParkLayout> getByNameAndCarPark(char name, int carParkId);
+	List<ParkLayout> getByNameAndCarPark(String name, int carParkId);
 }
