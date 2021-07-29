@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import kodluyoruz.ParkingControlSystem.entities.concretes.ParkLayout;
 
 public interface ParkLayoutDao extends JpaRepository<ParkLayout, Integer>{
+	
+	ParkLayout deleteById(int id);
 
 	ParkLayout getByName(String name);
 	
