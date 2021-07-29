@@ -3,6 +3,7 @@ package kodluyoruz.ParkingControlSystem.entities.concretes;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,7 +46,7 @@ public class Owner {
 	@Column(name="create_date")
 	private Date createDate;
 	
-	@OneToMany(mappedBy="owner")
+	@OneToMany(mappedBy="owner", cascade = CascadeType.REMOVE)
 	private List<CarPark> carParks;
 
 }

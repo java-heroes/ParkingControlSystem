@@ -42,6 +42,6 @@ public class CarPark {
     @JoinColumn(name="owner_id")
     private Owner owner;
     
-    @OneToMany(mappedBy="carPark", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="carPark", cascade = CascadeType.REMOVE)
     private List<ParkLayout> parkLayouts;
 }
