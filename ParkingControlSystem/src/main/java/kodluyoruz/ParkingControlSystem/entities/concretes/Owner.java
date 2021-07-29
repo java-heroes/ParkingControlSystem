@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -46,6 +47,7 @@ public class Owner {
 	@Column(name="create_date")
 	private Date createDate;
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy="owner", cascade = CascadeType.REMOVE)
 	private List<CarPark> carParks;
 
