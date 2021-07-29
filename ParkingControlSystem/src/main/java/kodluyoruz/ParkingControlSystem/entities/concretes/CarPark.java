@@ -5,7 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.Date;
 import java.util.List;
@@ -38,10 +40,12 @@ public class CarPark {
     @Column(name="unit_price")
     private float unitPrice;
 
+    @JsonBackReference
     @ManyToOne()
     @JoinColumn(name="owner_id")
     private Owner owner;
     
+    @JsonManagedReference
     @OneToMany(mappedBy="carPark", cascade = CascadeType.REMOVE)
     private List<ParkLayout> parkLayouts;
 }
