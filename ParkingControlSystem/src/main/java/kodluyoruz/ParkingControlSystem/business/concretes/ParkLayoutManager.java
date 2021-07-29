@@ -38,19 +38,19 @@ public class ParkLayoutManager implements ParkLayoutService{
 	}
 
 	@Override
-	public DataResult<ParkLayout> getByName(char name) {
+	public DataResult<ParkLayout> getByName(String name) {
 		return new SuccessDataResult<ParkLayout>(this.parkLayoutDao.getByName(name), "Data listelendi");
 		
 	}
 
 	@Override
-	public DataResult<ParkLayout> getByNameAndCarParkId(char name, int carParkId) {
+	public DataResult<ParkLayout> getByNameAndCarParkId(String name, int carParkId) {
 		return new SuccessDataResult<ParkLayout>(this.parkLayoutDao.getByNameAndCarParkId(name, carParkId), "Data listelendi");
 		
 	}
 
 	@Override
-	public DataResult<List<ParkLayout>> getByNameOrCarPark(char name, int carParkId) {
+	public DataResult<List<ParkLayout>> getByNameOrCarPark(String name, int carParkId) {
 		return new SuccessDataResult<List<ParkLayout>>(this.parkLayoutDao.getByNameOrCarPark(name, carParkId), "Data listelendi");
 		
 	}
@@ -62,19 +62,19 @@ public class ParkLayoutManager implements ParkLayoutService{
 	}
 
 	@Override
-	public DataResult<List<ParkLayout>> getByNameContains(char name) {
+	public DataResult<List<ParkLayout>> getByNameContains(String name) {
 		return new SuccessDataResult<List<ParkLayout>>(this.parkLayoutDao.getByNameContains(name), "Data listelendi");
 		
 	}
 
 	@Override
-	public DataResult<List<ParkLayout>> getByNameStartsWith(char name) {
+	public DataResult<List<ParkLayout>> getByNameStartsWith(String name) {
 		return new SuccessDataResult<List<ParkLayout>>(this.parkLayoutDao.getByNameStartsWith(name), "Data listelendi");
 		
 	}
 
 	@Override
-	public DataResult<List<ParkLayout>> getByNameAndCarPark(char name, int carParkId) {
+	public DataResult<List<ParkLayout>> getByNameAndCarPark(String name, int carParkId) {
 		return new SuccessDataResult<List<ParkLayout>>(this.parkLayoutDao.getByNameAndCarPark(name, carParkId), "Data listelendi");
 		
 	}

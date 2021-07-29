@@ -14,18 +14,18 @@ public interface ParkLayoutService {
 	
 	Result add(ParkLayout parkLayout);
 	
-	DataResult<ParkLayout> getByName(char name);
+	DataResult<ParkLayout> getByName(String name);
 	
-	DataResult<ParkLayout> getByNameAndCarParkId(char name, int carParkId);
+	DataResult<ParkLayout> getByNameAndCarParkId(String name, int carParkId);
 	
-	DataResult<List<ParkLayout>> getByNameOrCarPark(char name, int carParkId);
+	DataResult<List<ParkLayout>> getByNameOrCarPark(String name, int carParkId);
 	
 	DataResult<List<ParkLayout>> getByCarParkIdIn(List<Integer> carParks);
 	
-	DataResult<List<ParkLayout>> getByNameContains(char name);
+	DataResult<List<ParkLayout>> getByNameContains(String name);
 	
-	DataResult<List<ParkLayout>> getByNameStartsWith(char name);
+	DataResult<List<ParkLayout>> getByNameStartsWith(String name);
 	
-	DataResult<List<ParkLayout>> getByNameAndCarPark(char name, int carParkId);
+	DataResult<List<ParkLayout>> getByNameAndCarPark(String name, int carParkId);
 
 }
