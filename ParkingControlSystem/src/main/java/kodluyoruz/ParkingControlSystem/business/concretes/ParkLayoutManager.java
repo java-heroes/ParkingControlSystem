@@ -1,6 +1,7 @@
 package kodluyoruz.ParkingControlSystem.business.concretes;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kodluyoruz.ParkingControlSystem.business.abstracts.ParkLayoutService;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.DataResult;
+import kodluyoruz.ParkingControlSystem.core.utilities.results.ErrorResult;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.Result;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.SuccessDataResult;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.SuccessResult;
@@ -36,7 +38,22 @@ public class ParkLayoutManager implements ParkLayoutService{
 		this.parkLayoutDao.save(parkLayout);
 		return new SuccessResult("Otopark düzeni eklendi");
 	}
+	
+	@Override
+	public Result update(ParkLayout parkLayout) {
+		Optional<ParkLayout> getParkLayout = parkLayoutDao.findById(parkLayout.getId());
+		if(!getParkLayout.isPresent()) {
+			return new ErrorResult("Data Id'si bulunamadı");
+		}
+		this.parkLayoutDao.save(parkLayout);
+		return new SuccessResult("Data güncellendi");
+	}
 
+	@Override
+	public DataResult<ParkLayout> deleteById(int id) {
+		return new SuccessDataResult<ParkLayout>(this.parkLayoutDao.deleteById(id), "Data silindi");
+	}
+	
 	@Override
 	public DataResult<ParkLayout> getByName(String name) {
 		return new SuccessDataResult<ParkLayout>(this.parkLayoutDao.getByName(name), "Data listelendi");
@@ -84,5 +101,7 @@ public class ParkLayoutManager implements ParkLayoutService{
 		Sort sort = Sort.by(Sort.Direction.ASC, "name");
 		return new SuccessDataResult<List<ParkLayout>>(this.parkLayoutDao.findAll(sort), "Otopark düzeni listelendi");
 	}
+
+	
 
 }

@@ -14,6 +14,10 @@ public interface ParkLayoutService {
 	
 	Result add(ParkLayout parkLayout);
 	
+	Result update(ParkLayout parkLayout);
+	
+	DataResult<ParkLayout> deleteById(int id);
+	
 	DataResult<ParkLayout> getByName(String name);
 	
 	DataResult<ParkLayout> getByNameAndCarParkId(String name, int carParkId);
