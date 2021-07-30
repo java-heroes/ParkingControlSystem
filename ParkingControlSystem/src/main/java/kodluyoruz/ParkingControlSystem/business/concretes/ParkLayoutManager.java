@@ -13,7 +13,9 @@ import kodluyoruz.ParkingControlSystem.core.utilities.results.ErrorResult;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.Result;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.SuccessDataResult;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.SuccessResult;
+import kodluyoruz.ParkingControlSystem.dataAccess.abstracts.CarParkDao;
 import kodluyoruz.ParkingControlSystem.dataAccess.abstracts.ParkLayoutDao;
+import kodluyoruz.ParkingControlSystem.entities.concretes.CarPark;
 import kodluyoruz.ParkingControlSystem.entities.concretes.ParkLayout;
 
 @Service
@@ -26,19 +28,16 @@ public class ParkLayoutManager implements ParkLayoutService{
 		super();
 		this.parkLayoutDao = parkLayoutDao;
 	}
-
+	
+	@Autowired (required = false) 
+	private CarParkDao carParkDao;
+	
 	@Override
 	public DataResult<List<ParkLayout>> getAll() {
 		return new SuccessDataResult<List<ParkLayout>>(this.parkLayoutDao.findAll(), "Data listelendi");
 		
 	}
 
-	@Override
-	public Result add(ParkLayout parkLayout) {
-		this.parkLayoutDao.save(parkLayout);
-		return new SuccessResult("Otopark düzeni eklendi");
-	}
-	
 	@Override
 	public Result update(ParkLayout parkLayout) {
 		Optional<ParkLayout> getParkLayout = parkLayoutDao.findById(parkLayout.getId());
@@ -102,6 +101,28 @@ public class ParkLayoutManager implements ParkLayoutService{
 		return new SuccessDataResult<List<ParkLayout>>(this.parkLayoutDao.findAll(sort), "Otopark düzeni listelendi");
 	}
 
-	
+
+	public Result addParkLayoutName(int carParkId) {
+		String [] alphabet = {"x", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+		
+		CarPark temp = carParkDao.getById(carParkId);
+		int tempNumber = temp.getCapacity();
+		int numberOfLetter = tempNumber/10;
+		String layoutName;
+		
+		for(int i=1; i<=numberOfLetter; i++) {
+			layoutName = alphabet[i]; 
+			for(Integer j=1; j<=10; j++) {
+				layoutName += j.toString();
+				ParkLayout  parkLayout =new  ParkLayout();
+				parkLayout.setName(layoutName);
+				parkLayout.setCarPark(carParkDao.getById(carParkId));
+				parkLayoutDao.save(parkLayout);
+				layoutName = alphabet[i];
+			}
+		}
+		return new SuccessResult("Otopark düzeni eklendi");
+	}
+
 
 }
