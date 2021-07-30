@@ -14,6 +14,8 @@ public interface CarParkDao extends JpaRepository<CarPark, Integer>{
 	CarPark getByName (String name);
 	
 	CarPark getByNameAndOwner_id(String name, int ownerId);
+	
+	Integer getByCapacity(int id);
 
 	List<CarPark> getByNameOrOwner_id(String name, int ownerId);
 	
