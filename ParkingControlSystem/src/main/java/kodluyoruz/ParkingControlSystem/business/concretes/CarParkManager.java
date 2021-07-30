@@ -41,10 +41,16 @@ public class CarParkManager implements CarParkService{
 	@Override
 	public Result add(CarPark carPark) {
 
+		CarPark checkCarPark = new CarPark();
+		checkCarPark.setCapacity(carPark.getCapacity());
+		if(checkCarPark.getCapacity() % 10 != 0) {
+			return new ErrorResult("Otopark kapasıtesı 10'unn katı olmalı");
+		}
 		CarPark newCarPark = carParkDao.save(carPark);
 		parkLayoutService.addParkLayoutName(newCarPark.getId());
 		
 		return new SuccessResult("Otopark eklendi");
+		
 	}
 
 	@Override
