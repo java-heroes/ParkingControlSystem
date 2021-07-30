@@ -2,6 +2,7 @@ package kodluyoruz.ParkingControlSystem.entities.concretes;
 
 import lombok.Data;
 import javax.persistence.*;
+
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.util.Date;
@@ -30,5 +31,9 @@ public class ParkRental {
 
 	@OneToOne(mappedBy = "parkRental", cascade = CascadeType.ALL)
 	private RentalDetail rentalDetail;
-
+	
+	@ManyToOne()
+	@JoinColumn(name="park_layout_id")
+	private ParkLayout parkLayout;
+	
 }
