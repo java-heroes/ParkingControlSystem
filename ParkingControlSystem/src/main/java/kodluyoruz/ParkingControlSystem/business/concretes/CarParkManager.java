@@ -76,8 +76,7 @@ public class CarParkManager implements CarParkService{
 
 	@Override
 	public DataResult<CarPark> getByNameAndOwnerId(String name, int ownerId) {
-		//business codes
-		
+
 		return new SuccessDataResult<CarPark>(this.carParkDao.getByNameAndOwner_id(name, ownerId), "Otoparklar listelendi");
 	}
 
@@ -121,5 +120,11 @@ public class CarParkManager implements CarParkService{
 	public DataResult<Integer> getByCapacity(int id) {
 		int temp = this.carParkDao.getByCapacity(id);
 		return new SuccessDataResult<Integer>(temp, "Otopark kapasitesi getirildi");
+	}
+
+	@Override
+	public CarPark getById(int carParkId) {
+		CarPark tempPark = this.carParkDao.getById(carParkId);
+		return tempPark;
 	}
 }
