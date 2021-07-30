@@ -16,6 +16,8 @@ public interface CarParkService {
 	
 	Result update(CarPark parkLayout);
 	
+	DataResult<Integer> getByCapacity(int id);
+	
 	DataResult<CarPark> deleteById(int id);
 	
 	DataResult<CarPark> getByName (String name);
