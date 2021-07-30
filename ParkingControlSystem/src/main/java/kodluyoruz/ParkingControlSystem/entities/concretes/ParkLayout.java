@@ -46,6 +46,6 @@ public class ParkLayout {
 	private CarPark carPark;
 	
 	@OneToMany(mappedBy="parkLayout")
-	private List<ParkRental> parkRental;
+	private List<ParkRental> parkRentals;
 	
 }
