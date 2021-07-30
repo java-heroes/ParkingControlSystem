@@ -9,6 +9,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -27,6 +29,7 @@ public class User {
 	@Column(name = "create_date")
 	private Date createDate;
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy="user")
 	private List<ParkRental> parkRental;
 
