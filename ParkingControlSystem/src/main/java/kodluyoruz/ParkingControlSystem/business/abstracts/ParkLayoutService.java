@@ -12,8 +12,6 @@ public interface ParkLayoutService {
 	
 	DataResult<List<ParkLayout>> getAllSorted();
 	
-	Result add(ParkLayout parkLayout);
-	
 	Result update(ParkLayout parkLayout);
 	
 	DataResult<ParkLayout> deleteById(int id);
@@ -31,5 +29,7 @@ public interface ParkLayoutService {
 	DataResult<List<ParkLayout>> getByNameStartsWith(String name);
 	
 	DataResult<List<ParkLayout>> getByNameAndCarPark(String name, int carParkId);
+	
+	Result addParkLayoutName(int carParkId);
 
 }
