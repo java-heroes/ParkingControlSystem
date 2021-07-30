@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import kodluyoruz.ParkingControlSystem.business.abstracts.CarParkService;
 import kodluyoruz.ParkingControlSystem.business.abstracts.ParkLayoutService;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.DataResult;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.ErrorResult;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.Result;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.SuccessDataResult;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.SuccessResult;
-import kodluyoruz.ParkingControlSystem.dataAccess.abstracts.CarParkDao;
 import kodluyoruz.ParkingControlSystem.dataAccess.abstracts.ParkLayoutDao;
 import kodluyoruz.ParkingControlSystem.entities.concretes.CarPark;
 import kodluyoruz.ParkingControlSystem.entities.concretes.ParkLayout;
@@ -29,8 +29,8 @@ public class ParkLayoutManager implements ParkLayoutService{
 		this.parkLayoutDao = parkLayoutDao;
 	}
 	
-	@Autowired (required = false) 
-	private CarParkDao carParkDao;
+	@Autowired (required = false)
+	private CarParkService carParkService;
 	
 	@Override
 	public DataResult<List<ParkLayout>> getAll() {
@@ -105,7 +105,7 @@ public class ParkLayoutManager implements ParkLayoutService{
 	public Result addParkLayoutName(int carParkId) {
 		String [] alphabet = {"x", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
 		
-		CarPark temp = carParkDao.getById(carParkId);
+		CarPark temp = this.carParkService.getById(carParkId);
 		int tempNumber = temp.getCapacity();
 		int numberOfLetter = tempNumber/10;
 		String layoutName;
@@ -116,7 +116,7 @@ public class ParkLayoutManager implements ParkLayoutService{
 				layoutName += j.toString();
 				ParkLayout  parkLayout =new  ParkLayout();
 				parkLayout.setName(layoutName);
-				parkLayout.setCarPark(carParkDao.getById(carParkId));
+				parkLayout.setCarPark(carParkService.getById(carParkId));
 				parkLayoutDao.save(parkLayout);
 				layoutName = alphabet[i];
 			}
