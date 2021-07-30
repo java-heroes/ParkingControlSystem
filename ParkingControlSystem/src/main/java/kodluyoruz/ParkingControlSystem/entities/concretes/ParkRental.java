@@ -10,25 +10,25 @@ import java.util.Date;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="park_rentals")
+@Table(name = "park_rentals")
 public class ParkRental {
-	
-	 @Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 @Column(name="id")
-	 private int id;
-	 
-	 @Column(name="rent_date")
-	 private Date rentDate;
-	
-	 @Column(name="end_date")
-	 private Date endDate;
-	
-	 @ManyToOne()
-	 @JoinColumn(name="user_id")
-	 private User user;
-	
-	 
-	 
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private int id;
+
+	@Column(name = "rent_date")
+	private Date rentDate;
+
+	@Column(name = "end_date")
+	private Date endDate;
+
+	@ManyToOne()
+	@JoinColumn(name = "user_id")
+	private User user;
+
+	@OneToOne(mappedBy = "parkRental", cascade = CascadeType.ALL)
+	private RentalDetail rentalDetail;
 
 }
