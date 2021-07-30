@@ -18,6 +18,8 @@ public interface CarParkService {
 	
 	DataResult<Integer> getByCapacity(int id);
 	
+	CarPark getById(int carParkId);
+	
 	DataResult<CarPark> deleteById(int id);
 	
 	DataResult<CarPark> getByName (String name);
