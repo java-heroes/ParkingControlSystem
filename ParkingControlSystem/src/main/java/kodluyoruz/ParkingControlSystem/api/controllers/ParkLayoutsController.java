@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kodluyoruz.ParkingControlSystem.business.abstracts.ParkLayoutService;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.DataResult;
-import kodluyoruz.ParkingControlSystem.core.utilities.results.Result;
 import kodluyoruz.ParkingControlSystem.entities.concretes.ParkLayout;
 
 @RestController
@@ -33,11 +30,6 @@ public class ParkLayoutsController {
 		return this.parkLayoutService.getAll();
 	}
 
-	@PostMapping("/add")
-	public Result add(@RequestBody ParkLayout parkLayout) {
-		return this.parkLayoutService.add(parkLayout);
-	}
-	
 	@GetMapping("/getByName")
 	public DataResult<ParkLayout> getByName(@RequestParam String name){
 		return this.parkLayoutService.getByName(name);
