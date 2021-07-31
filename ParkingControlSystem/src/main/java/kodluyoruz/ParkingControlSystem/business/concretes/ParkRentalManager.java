@@ -49,12 +49,12 @@ public class ParkRentalManager implements ParkRentalService {
                 (this.parkRentalDao.getByRentDate(rentDate), "Data listelendi");
     }
 
-    @Override
+    /*@Override
     public DataResult<ParkRental> getByRentDateAndEndDate(Date rentDate, Date endDate) {
         return new SuccessDataResult<ParkRental>
                 (this.parkRentalDao.getByRentDateAndEndDate(rentDate, endDate), "Data listelendi");
     }
-
+*/
     @Override
     public DataResult<List<ParkRental>> getByRentDateContains(Date rentDate) {
         return new SuccessDataResult<List<ParkRental>>
@@ -62,9 +62,7 @@ public class ParkRentalManager implements ParkRentalService {
     }
 
     @Override
-    public DataResult deleteById(int id) {
-        this.parkRentalDao.deleteById(id);
-        return new SuccessDataResult("Data silindi");
+    public DataResult<ParkRental> deleteById(int id) {
+        return new SuccessDataResult<ParkRental>(this.parkRentalDao.deleteById(id),"Data silindi");
     }
-
 }

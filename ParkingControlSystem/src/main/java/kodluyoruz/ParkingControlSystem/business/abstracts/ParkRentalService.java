@@ -17,7 +17,7 @@ public interface ParkRentalService {
 
     DataResult<ParkRental> getByRentDate(Date rentDate);
 
-    DataResult<ParkRental> getByRentDateAndEndDate(Date rentDate, Date endDate);
+    //DataResult<ParkRental> getByRentDateAndEndDate(Date rentDate, Date endDate);
 
     DataResult<List<ParkRental>> getByRentDateContains(Date rentDate);
 

@@ -10,7 +10,7 @@ public interface ParkRentalDao extends JpaRepository<ParkRental, Integer> {
 
     ParkRental getByRentDate(Date rentDate);
 
-    ParkRental getByRentDateAndEndDate(Date rentDate, Date endDate);
+    //ParkRental getByRentDateAndEndDate(Date rentDate, Date endDate);
 
     List<ParkRental> getByRentDateContains(Date rentDate);
 
