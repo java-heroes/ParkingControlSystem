@@ -17,6 +17,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -44,7 +45,8 @@ public class ParkLayout {
 	@ManyToOne()
 	@JoinColumn(name="car_park_id")
 	private CarPark carPark;
-	
+
+	@JsonManagedReference
 	@OneToMany(mappedBy="parkLayout")
 	private List<ParkRental> parkRentals;
 	
