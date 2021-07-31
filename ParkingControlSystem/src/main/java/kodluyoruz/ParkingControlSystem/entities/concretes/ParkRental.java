@@ -1,7 +1,11 @@
 package kodluyoruz.ParkingControlSystem.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import javax.persistence.*;
+
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.util.Date;
@@ -24,11 +28,15 @@ public class ParkRental {
 	@Column(name = "end_date")
 	private Date endDate;
 
+	//@JsonBackReference
 	@ManyToOne()
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	@OneToOne(mappedBy = "parkRental", cascade = CascadeType.ALL)
-	private RentalDetail rentalDetail;
+	@JsonBackReference
+	@ManyToOne()
+	@JoinColumn(name="park_layout_id")
+	private ParkLayout parkLayout;
+
 
 }
