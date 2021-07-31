@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import javax.persistence.*;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.util.Date;
@@ -37,6 +37,5 @@ public class ParkRental {
 	@ManyToOne()
 	@JoinColumn(name="park_layout_id")
 	private ParkLayout parkLayout;
-
 
 }
