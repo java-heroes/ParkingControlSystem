@@ -9,11 +9,11 @@ import kodluyoruz.ParkingControlSystem.entities.concretes.RentalDetail;
 public interface RentalDetailService {
 
 	DataResult<List<RentalDetail>> getAll();
-
-	Result add(RentalDetail rentalDetail);
-
-	Result update(RentalDetail rentalDetail);
+	
+	DataResult<RentalDetail> getByParkRentalId(Integer parkRentalId);
 
 	Result delete(Integer id);
+	
+	Result addRentalDetail(int parkRentalId, float totalPrice);
 
 }

@@ -1,12 +1,12 @@
 package kodluyoruz.ParkingControlSystem.business.concretes;
 
 import kodluyoruz.ParkingControlSystem.business.abstracts.ParkRentalService;
+import kodluyoruz.ParkingControlSystem.business.abstracts.RentalDetailService;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.*;
 import kodluyoruz.ParkingControlSystem.dataAccess.abstracts.ParkRentalDao;
 import kodluyoruz.ParkingControlSystem.entities.concretes.ParkRental;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,16 +20,20 @@ public class ParkRentalManager implements ParkRentalService {
         super();
         this.parkRentalDao = parkRentalDao;
     }
+    
+    @Autowired(required = false)
+    private RentalDetailService rentalDetailService;
 
     @Override
     public DataResult<List<ParkRental>> getAll() {
         return new SuccessDataResult<List<ParkRental>>(this.parkRentalDao.findAll(), "Data listelendi");
     }
 
-
     @Override
     public Result add(ParkRental parkRental) {
         this.parkRentalDao.save(parkRental);
+        float totalPrice = 0; //(Geçici Değişken) total price hesaplaması yapılınca kaldırılacak.
+        rentalDetailService.addRentalDetail(parkRental.getId(), totalPrice);
         return new SuccessResult("Data eklendi");
     }
 
@@ -44,25 +48,13 @@ public class ParkRentalManager implements ParkRentalService {
     }
 
     @Override
-    public DataResult<ParkRental> getByRentDate(Date rentDate) {
-        return new SuccessDataResult<ParkRental>
-                (this.parkRentalDao.getByRentDate(rentDate), "Data listelendi");
-    }
-
-    /*@Override
-    public DataResult<ParkRental> getByRentDateAndEndDate(Date rentDate, Date endDate) {
-        return new SuccessDataResult<ParkRental>
-                (this.parkRentalDao.getByRentDateAndEndDate(rentDate, endDate), "Data listelendi");
-    }
-*/
-    @Override
-    public DataResult<List<ParkRental>> getByRentDateContains(Date rentDate) {
-        return new SuccessDataResult<List<ParkRental>>
-                (this.parkRentalDao.getByRentDateContains(rentDate), "Data listelendi");
-    }
-
-    @Override
     public DataResult<ParkRental> deleteById(int id) {
         return new SuccessDataResult<ParkRental>(this.parkRentalDao.deleteById(id),"Data silindi");
     }
+
+	@Override
+	public ParkRental getById(Integer parkRentalId) {
+		ParkRental tempRental=this.parkRentalDao.getById(parkRentalId);
+		return tempRental;
+	}
 }
