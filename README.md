@@ -14,6 +14,7 @@
 ![Lines of code](https://img.shields.io/tokei/lines/github/java-heroes/ParkingControlSystem)
 
 
+
 ## :tada: Getting Started
 
 There will be two types of users in the parking control system. Parking lot owners will be able to define their businesses to the system. Users by registering with the system, will be able to rent a parking space for their vehicles.
