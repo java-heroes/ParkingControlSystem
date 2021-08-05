@@ -15,4 +15,6 @@ public interface ParkRentalDao extends JpaRepository<ParkRental, Integer> {
     List<ParkRental> getByRentDateContains(Date rentDate);
 
     ParkRental deleteById(int id);
+    
+    List<ParkRental> getByParkLayoutId(int parkLayoutId);
 }

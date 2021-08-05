@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -49,6 +50,7 @@ public class Owner {
 	
 	@JsonManagedReference
 	@OneToMany(mappedBy="owner", cascade = CascadeType.REMOVE)
+	@JsonIgnore
 	private List<CarPark> carParks;
 
 }
