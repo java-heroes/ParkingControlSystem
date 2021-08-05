@@ -1,7 +1,6 @@
 package kodluyoruz.ParkingControlSystem.entities.concretes;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,7 +29,7 @@ public class User {
 	@Column(name = "create_date")
 	private Date createDate;
 
-	@JsonManagedReference
+
 	@OneToMany(mappedBy="user")
 	private List<ParkRental> parkRental;
 

@@ -2,7 +2,16 @@ package kodluyoruz.ParkingControlSystem.entities.concretes;
 
 import java.util.Date;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,9 +37,10 @@ public class RentalDetail {
 
 	@Column(name = "payment_date")
 	private Date paymentDate;
-
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinTable(name="ParkRental", joinColumns= {@JoinColumn(name="id")})
+	
+	@JsonBackReference
+	@OneToOne()
+	@JoinColumn(name="park_rental_id") 
 	private ParkRental parkRental;
-
+	
 }
