@@ -14,6 +14,4 @@ public interface RentalDetailService {
 
 	Result delete(Integer id);
 	
-	Result addRentalDetail(int parkRentalId, float totalPrice);
-
 }
