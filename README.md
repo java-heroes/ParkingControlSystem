@@ -1,6 +1,8 @@
 # :tada: Parking Control System :red_car:
 :star: This repository includes the backend of the parking control system. <br/>
 
+[![CodeFactor](https://www.codefactor.io/repository/github/java-heroes/parkingcontrolsystem/badge)](https://www.codefactor.io/repository/github/java-heroes/parkingcontrolsystem)
+
 ## :tada: Getting Started
 
 There will be two types of users in the parking control system. Parking lot owners will be able to define their businesses to the system. Users by registering with the system, will be able to rent a parking space for their vehicles.
