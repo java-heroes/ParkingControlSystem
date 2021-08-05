@@ -4,16 +4,19 @@ import lombok.Data;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.util.Date;
 
-@Data
 @Entity
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "park_rentals")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","rentalDetail"})
 public class ParkRental {
 
 	@Id
@@ -27,7 +30,7 @@ public class ParkRental {
 	@Column(name = "end_date")
 	private Date endDate;
 
-	// @JsonBackReference
+	@JsonBackReference
 	@ManyToOne()
 	@JoinColumn(name = "user_id")
 	private User user;
@@ -37,4 +40,8 @@ public class ParkRental {
 	@JoinColumn(name = "park_layout_id")
 	private ParkLayout parkLayout;
 
+	@JsonManagedReference
+	@OneToOne(mappedBy="parkRental")
+	private RentalDetail rentalDetail;
+	 
 }
