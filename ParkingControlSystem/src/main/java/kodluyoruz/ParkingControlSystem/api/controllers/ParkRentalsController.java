@@ -4,8 +4,14 @@ import kodluyoruz.ParkingControlSystem.business.abstracts.ParkRentalService;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.DataResult;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.Result;
 import kodluyoruz.ParkingControlSystem.entities.concretes.ParkRental;
+import kodluyoruz.ParkingControlSystem.entities.dto.ParkRentalDto;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import io.swagger.v3.oas.annotations.Operation;
+
 import java.util.List;
 
 @RestController
@@ -20,14 +26,16 @@ public class ParkRentalsController {
         this.parkRentalService=parkRentalService;
     }
 
+    @Operation(summary="Park Rental Listesi", description = "Park rental listesi getirir")
     @GetMapping("/getAll")
     public DataResult<List<ParkRental>> getAll(){
         return this.parkRentalService.getAll();
     }
 
-    @PostMapping("/add")
-    public Result add(@RequestBody ParkRental parkRental){
-        return this.parkRentalService.add(parkRental);
+    
+    @PostMapping(path="/add", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Result add(@RequestBody ParkRentalDto parkRentalDto){
+        return this.parkRentalService.add(parkRentalDto);
     }
 
     @PutMapping("/update")
