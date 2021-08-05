@@ -1,8 +1,5 @@
 package kodluyoruz.ParkingControlSystem.entities.concretes;
 
-
-
-
 import java.util.List;
 
 import javax.persistence.Column;
@@ -15,9 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,19 +30,18 @@ public class ParkLayout {
 	@Column(name="id")
 	private int id;
 	
-	//@Column(name="car_park_id")
-	//private int carParkId;
-	
 	@Column(name="name")
 	private String name;
 	
 	@JsonBackReference
 	@ManyToOne()
 	@JoinColumn(name="car_park_id")
+	@JsonIgnore
 	private CarPark carPark;
 
-	@JsonManagedReference
+	
 	@OneToMany(mappedBy="parkLayout")
+	@JsonIgnore
 	private List<ParkRental> parkRentals;
 	
 }
