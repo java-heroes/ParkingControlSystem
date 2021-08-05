@@ -5,6 +5,7 @@ import kodluyoruz.ParkingControlSystem.core.utilities.results.DataResult;
 import kodluyoruz.ParkingControlSystem.core.utilities.results.Result;
 import kodluyoruz.ParkingControlSystem.entities.concretes.ParkRental;
 import kodluyoruz.ParkingControlSystem.entities.dto.ParkRentalDto;
+import kodluyoruz.ParkingControlSystem.entities.dto.ParkRentalDtoUpdate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -39,8 +40,8 @@ public class ParkRentalsController {
     }
 
     @PutMapping("/update")
-    public Result update(@RequestBody ParkRental parkRental) {
-        return this.parkRentalService.update(parkRental);
+    public Result update(@RequestBody ParkRentalDtoUpdate parkRentalDtoUpdate) {
+        return this.parkRentalService.update(parkRentalDtoUpdate);
     }
 
     @DeleteMapping("/delete/{id}")
