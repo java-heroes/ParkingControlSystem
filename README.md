@@ -22,8 +22,8 @@ There are two types of users in the parking control system. Parking lot owners c
 
 <img src="https://user-images.githubusercontent.com/64933639/128505845-d8b8a46d-1f8e-433a-ad4d-c80fd22ab5fb.jpg" alt="drawing" width="300"/>
 
-#### Our Goals
-Features such as payment service, reporting of an owner's car parks, rental reporting for businesses will be included in the project.
+### :sparkles: Our Goals
+Features such as authentication authorization, payment service, reporting of an owner's car parks, rental reporting for businesses will be included in the project.
 
 ### Technologies
 - Java
